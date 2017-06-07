@@ -5,7 +5,11 @@ new Vue({
     el: '#contact_form', // id of the 'app'
     data: {
         name: '',   // data for the name on the form
+        cellPhone: '' //data cellPhone
         email:'',   // data for the email on the form
+        company:'', // data for company
+        companyType: '', // data for companyType
+        subject:'', //data for subject
         message:'', // data for the message on the form
         maxLength: 140 // maximum length of the form message
     },
@@ -16,7 +20,7 @@ new Vue({
             return valid;
         },
         isValidEmail: function () { // TODO is a@b a valid email?
-            var valid = this.email.indexOf('@') > 0;
+            var valid = (this.email.indexOf('@') > 0 && this.email.length > 0);
             console.log('checking for a valid email: ' + valid);
             return valid;
         },
@@ -38,7 +42,11 @@ new Vue({
             this.$http({url: '127.0.0.1:8000/submit', method: 'POST', data: {
               //Agregar todos los campos
                 name: this.name,
+                cellPhone: this.cellPhone,
                 email: this.email,
+                company: this.company,
+                companyType: this.companyType,
+                subject: this.subject,
                 message: this.message
             }}).then(function () {
                 alert('Your form was submitted!');
