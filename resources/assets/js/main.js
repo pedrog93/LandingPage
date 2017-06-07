@@ -35,7 +35,8 @@ new Vue({
             //      are invalid and display message
             // TODO submit to form processor
             console.log('submitting message...');
-            this.$http({url: '/someUrl', method: 'POST', data: {
+            this.$http({url: '127.0.0.1:8000/submit', method: 'POST', data: {
+              //Agregar todos los campos
                 name: this.name,
                 email: this.email,
                 message: this.message
